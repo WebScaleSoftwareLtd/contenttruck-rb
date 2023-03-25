@@ -1,0 +1,18 @@
+module Contenttruck
+  VERSION: String
+
+  class UserError < StandardError
+    attr_reader code: String
+  end
+
+  class Client
+    def initialize: (base_url: String) -> void
+
+    def upload: (key: String, partition: String, content_type: String, content_or_reader: String | IO) -> void
+    def delete: (key: String, partition: String, relative_path: String) -> void
+    def create_key: (sudo_key: String, partitions: Array[String]) -> Hash
+    def delete_key: (sudo_key: String, key: String) -> void
+    def create_partition: (sudo_key: String, name: String, rule_set: String) -> Hash
+    def delete_partition: (sudo_key: String, name: String) -> void
+  end
+end
